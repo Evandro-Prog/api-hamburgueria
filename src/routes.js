@@ -1,19 +1,38 @@
-import { Router } from 'express'
-import { v4 as uuidv4 } from 'uuid'
+import { Router } from 'express'; // Importing the Router from Express
+import multer from 'multer';
+import authMiddleware from '../src/app/middlewares/auth'; // Importing the authentication middleware
+import multerConfig from './config/multer'; // Importing the multer configuration for file uploads
 
-import User from './app/models/User'
+import CategoryController from './app/controllers/CategoryController';
+import OrderController from './app/controllers/OrderController';
+import ProductController from './app/controllers/ProductController';
+import SessionController from './app/controllers/SessionController';
+import UserController from './app/controllers/UserController';
+
 
 const routes = Router()
 
-routes.get('/', async (req, res) => {
-    const user = await User.create({
-        id: uuidv4(),
-        name: 'Evandro2',
-        email: 'evandro2@email.com',
-        password_hash: '123456',
-    })
+const upload = multer(multerConfig) // Initializing multer with the configuration
 
-    return res.status(201).json(user)
-})
+routes.post('/users', UserController.store)
+routes.post('/session', SessionController.store)
+
+routes.use(authMiddleware) // Applying the authentication middleware to all routes below
+
+routes.post('/products', upload.single('file'), ProductController.store)
+routes.get('/products', ProductController.index)
+routes.put('/products/:id', upload.single('file'), ProductController.update)
+
+
+routes.post('/categories', CategoryController.store)
+routes.get('/categories', CategoryController.index)
+
+routes.post('/orders', OrderController.store)
+routes.get('/orders', OrderController.index)
+routes.put('/orders/:id', OrderController.update)
+
 
 export default routes
+
+// File that defines the routes for the application using Express Router.
+// It imports the necessary modules, including the Router from Express and the UserController for handling user-related requests.

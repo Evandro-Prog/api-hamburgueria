@@ -10,7 +10,8 @@ export default defineConfig([
 
   {
     rules: {
-      "prettier/prettier": "error"
+      "prettier/prettier": "error",
+      "unused-imports/no-unused-imports": "off"
     }
   }
 ]);

@@ -1,4 +1,5 @@
 module.exports = {
+    //Database configuration
     dialect: 'postgres',
     host: 'localhost',
     port: 5432,
@@ -6,10 +7,9 @@ module.exports = {
     password: 'postgres',
     database: 'api_hamburgueria',
     define: {
-        timestamps: true, //registra a data de criação e atualização dos registros
-        underscored: true, //utiliza o padrão snake_case
-        underscoredAll: true, //utiliza o padrão snake_case para todas as colunas
+        timestamps: true, //Registers createdAt and updatedAt
+        underscored: true, //Uses snake_case for column names
+        underscoredAll: true, //Uses snake_case for all column names
     }
 }
 
-//Arquivo de configuração do banco de dados

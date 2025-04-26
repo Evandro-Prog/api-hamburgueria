@@ -1,0 +1,7 @@
+function emailOrPasswordIncorrect(response) {
+    return response
+        .status(401)
+        .json({ error: 'Make sure to fill in all fields correctly' });
+}
+
+module.exports = { emailOrPasswordIncorrect };

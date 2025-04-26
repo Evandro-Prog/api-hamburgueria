@@ -1,7 +1,9 @@
-import express from 'express'
-import routes from './routes'
+import express from 'express';
+import routes from './routes';
 
-import './database'; // Instancia a classe assim que a aplicação iniciar
+import './database'; // Import the database configuration and models
+import { resolve } from 'node:path';
+// Import the database configuration and models to establish a connection to the database
 
 class App {
     constructor() {
@@ -11,7 +13,7 @@ class App {
     }
 
     middlewares() {
-        this.app.use(express.json())
+        this.app.use(express.json())        
     }
 
     routes() {
@@ -22,3 +24,6 @@ class App {
 
 
 export default new App().app
+
+// File that initializes the Express application and sets up middleware and routes.
+// It imports the necessary modules, including the Express framework and the routes defined in a separate file.
