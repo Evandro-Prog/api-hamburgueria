@@ -1,5 +1,6 @@
 import express from 'express';
 import routes from './routes';
+import cors from 'cors'; // Import the CORS middleware for handling cross-origin requests
 
 import './database'; // Import the database configuration and models
 import { resolve } from 'node:path';
@@ -8,6 +9,7 @@ import { resolve } from 'node:path';
 class App {
     constructor() {
         this.app = express()
+        this.app.use(cors()) // Use the CORS middleware to enable cross-origin requests
         this.middlewares()
         this.routes()
     }
