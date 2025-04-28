@@ -100,7 +100,7 @@ Authorization: Bearer <seu_token>
 | GET    | /produtos     | Lista produtos            |
 | POST   | /produtos     | Cria novo produto         |
 | PUT    | /produtos/:id | Atualiza produto          |
-| DELETE | /produtos/:id | Remove produto            |
+
 
 #### 🛒 Pedidos
 
