@@ -5,7 +5,7 @@ module.exports = {
     port: 5432,
     username: 'postgres',
     password: 'postgres',
-    database: 'api_hamburgueria',
+    database: 'api-hamburgueria',
     define: {
         timestamps: true, //Registers createdAt and updatedAt
         underscored: true, //Uses snake_case for column names
